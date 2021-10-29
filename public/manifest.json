@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Systemd Timer Generator",
+  "name": "Systemd Timer Generator",
   "icons": [
     {
       "src": "favicon.ico",
