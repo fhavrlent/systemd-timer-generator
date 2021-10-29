@@ -84,7 +84,15 @@ WantedBy=timers.target
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="interval">
-                <Form.Label>Run Interval</Form.Label>
+                <Form.Label>
+                  <a
+                    href="https://man.archlinux.org/man/systemd.time.7"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Run Interval
+                  </a>
+                </Form.Label>
                 <Form.Control
                   type="text"
                   placeholder="interval"
