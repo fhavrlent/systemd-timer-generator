@@ -37,6 +37,8 @@ WantedBy=timers.target
   const timerData = new Blob([timerTemplate], { type: "text/plain" });
   const timerFile = window.URL.createObjectURL(timerData);
 
+  const serviceNameWithDash = replaceSpace(serviceName);
+
   return (
     <Container>
       <Row>
@@ -94,7 +96,7 @@ WantedBy=timers.target
                 <Button
                   variant="primary"
                   href={serviceFile}
-                  download={`${serviceName}.service`}
+                  download={`${serviceNameWithDash}.service`}
                   disabled={disabled}
                   className="ml-1"
                 >
@@ -104,7 +106,7 @@ WantedBy=timers.target
                 <Button
                   variant="primary"
                   href={timerFile}
-                  download={`${serviceName}.timer`}
+                  download={`${serviceNameWithDash}.timer`}
                   disabled={disabled}
                 >
                   Download Timer file
@@ -117,15 +119,16 @@ WantedBy=timers.target
                 <li>Download both files.</li>
                 <li>
                   <code>
-                    sudo cp {serviceName || "name"}.service{" "}
-                    {serviceName || "name"}
+                    sudo cp {serviceNameWithDash || "name"}.service{" "}
+                    {serviceNameWithDash || "name"}
                     .timer /etc/systemd/system/
                   </code>
                 </li>
                 <li>
                   <code>
-                    sudo systemctl enable {serviceName || "name"}.timer && sudo
-                    systemctl start {serviceName || "name"}.timer
+                    sudo systemctl enable {serviceNameWithDash || "name"}.timer
+                    && sudo systemctl start {serviceNameWithDash || "name"}
+                    .timer
                   </code>
                 </li>
               </ol>
@@ -136,3 +139,5 @@ WantedBy=timers.target
     </Container>
   );
 }
+
+const replaceSpace = (serviceName) => serviceName.replace(/\s/g, "-");
